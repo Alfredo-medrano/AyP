@@ -1,7 +1,8 @@
 [build]
   base = "mi-app/frontend"
   publish = "dist"
-  command = "npm install --include=optional && npm run build"
+  # Usamos npm install normal para que descargue lo que falta para Linux
+  command = "npm install && npm run build"
 
 [build.environment]
   NODE_VERSION = "22"
