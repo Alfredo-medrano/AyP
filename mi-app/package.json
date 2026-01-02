@@ -1,0 +1,31 @@
+{
+    "name": "mi-app",
+    "version": "1.0.0",
+    "description": "Aplicación de gestión de gastos con React + Vite + PWA y Supabase",
+    "private": true,
+    "workspaces": [
+        "frontend",
+        "shared"
+    ],
+    "scripts": {
+        "dev": "npm run dev --workspace=frontend",
+        "build": "npm run build --workspace=frontend",
+        "preview": "npm run preview --workspace=frontend",
+        "lint": "npm run lint --workspace=frontend",
+        "supabase:start": "supabase start",
+        "supabase:stop": "supabase stop",
+        "supabase:status": "supabase status",
+        "supabase:db:reset": "supabase db reset",
+        "supabase:functions": "supabase functions serve"
+    },
+    "keywords": [
+        "react",
+        "vite",
+        "pwa",
+        "supabase",
+        "offline-first",
+        "indexeddb"
+    ],
+    "author": "",
+    "license": "MIT"
+}

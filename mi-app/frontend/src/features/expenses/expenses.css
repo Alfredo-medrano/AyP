@@ -1,0 +1,533 @@
+/* Expenses Page - Professional UI */
+
+/* ============ Page Layout ============ */
+.expenses-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Watermark Background */
+.expenses-page::before {
+    content: '';
+    position: fixed;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 50vmin;
+    height: 50vmin;
+    background-image: url('/AyP.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ============ Header Section ============ */
+.expenses-header {
+    margin-bottom: 2rem;
+}
+
+.expenses-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.expenses-header p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+/* ============ Stats Cards ============ */
+.expenses-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.expense-stat-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.expense-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.expense-stat-card.total::before {
+    background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+.expense-stat-card.servicios::before {
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.expense-stat-card.mantenimiento::before {
+    background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+}
+
+.expense-stat-card.otros::before {
+    background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.expense-stat-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.expense-stat-amount {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.expense-stat-label {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.expense-stat-count {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+}
+
+/* ============ Actions Bar ============ */
+.expenses-actions-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.expenses-filters {
+    display: flex;
+    gap: 0.75rem;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.expense-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.expense-filter-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.expense-filter-select,
+.expense-filter-input {
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    background: white;
+    min-width: 140px;
+    transition: all 0.2s;
+}
+
+.expense-filter-select:focus,
+.expense-filter-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.add-expense-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.add-expense-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(239, 68, 68, 0.5);
+}
+
+/* ============ Expense Table ============ */
+.expenses-table-container {
+    background: white;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.expenses-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.expenses-table th {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    background: #f8fafc;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.expenses-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+    color: #1e293b;
+}
+
+.expenses-table tr:last-child td {
+    border-bottom: none;
+}
+
+.expenses-table tr:hover {
+    background: #f8fafc;
+}
+
+.expense-amount {
+    font-weight: 600;
+    color: #ef4444;
+}
+
+.expense-category-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.expense-category-badge.servicios-basicos {
+    background: rgba(59, 130, 246, 0.1);
+    color: #2563eb;
+}
+
+.expense-category-badge.mantenimiento {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.expense-category-badge.ayuda-social {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+}
+
+.expense-category-badge.limpieza {
+    background: rgba(6, 182, 212, 0.1);
+    color: #0891b2;
+}
+
+.expense-category-badge.otros {
+    background: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
+}
+
+.expense-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.expense-action-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+}
+
+.expense-action-btn.edit {
+    background: rgba(245, 158, 11, 0.1);
+    color: #d97706;
+}
+
+.expense-action-btn.edit:hover {
+    background: rgba(245, 158, 11, 0.2);
+}
+
+.expense-action-btn.delete {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.expense-action-btn.delete:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* ============ Expense Modal ============ */
+.expense-modal-body {
+    padding: 1.5rem;
+}
+
+.expense-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.expense-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.expense-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.expense-form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.expense-form-input,
+.expense-form-select,
+.expense-form-textarea {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.expense-form-input:focus,
+.expense-form-select:focus,
+.expense-form-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.expense-form-input.input-error {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.input-error-text {
+    font-size: 0.75rem;
+    color: #ef4444;
+    margin-top: 0.25rem;
+}
+
+/* ============ Fund Balances ============ */
+.fund-balances-summary {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.fund-summary-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.fund-balances-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.fund-balance-item {
+    background: white;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fund-balance-item:hover:not(.empty) {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.fund-balance-item.selected {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.fund-balance-item.empty {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.fund-name {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.fund-amount {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #10b981;
+}
+
+.fund-amount.negative {
+    color: #ef4444;
+}
+
+/* Funding Source Badge in Table */
+.funding-source-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+}
+
+/* ============ Empty State ============ */
+.expenses-empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #64748b;
+}
+
+.expenses-empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.expenses-empty-state h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.5rem;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 1024px) {
+    .expenses-page {
+        padding: 1.5rem;
+    }
+
+    .expenses-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .expenses-page {
+        padding: 1rem;
+    }
+
+    .expenses-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .expenses-actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .expenses-filters {
+        flex-direction: column;
+    }
+
+    .expense-filter-select,
+    .expense-filter-input {
+        width: 100%;
+    }
+
+    .add-expense-btn {
+        justify-content: center;
+    }
+
+    .expenses-table-container {
+        overflow-x: auto;
+    }
+
+    .expenses-table {
+        min-width: 600px;
+    }
+
+    .expense-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .expense-stat-card {
+        padding: 1rem;
+    }
+
+    .expense-stat-amount {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .expenses-page {
+        padding: 0.75rem;
+    }
+
+    .expenses-stats-grid {
+        gap: 0.75rem;
+    }
+
+    .expense-stat-card {
+        padding: 0.875rem;
+    }
+
+    .expense-stat-amount {
+        font-size: 1.25rem;
+    }
+
+    .expense-stat-label {
+        font-size: 0.75rem;
+    }
+}
