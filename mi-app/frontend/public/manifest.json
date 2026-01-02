@@ -1,7 +1,7 @@
 {
-    "name": "Mi App",
-    "short_name": "MiApp",
-    "description": "Aplicación de gestión de gastos con soporte offline",
+    "name": "Ayp-LU",
+    "short_name": "AyPLU",
+    "description": "Aplicación de gestión AyP-LU",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#f9fafb",
@@ -9,15 +9,15 @@
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "/icons/icon-72x72.png",
+            "src": "/AyP.svg",
             "sizes": "72x72",
-            "type": "image/png",
+            "type": "image/svg+xml",
             "purpose": "maskable any"
         },
         {
-            "src": "/icons/icon-96x96.png",
+            "src": "/AyP.svg",
             "sizes": "96x96",
-            "type": "image/png",
+            "type": "image/svg+xml",
             "purpose": "maskable any"
         },
         {
