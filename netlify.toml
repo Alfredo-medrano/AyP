@@ -1,7 +1,7 @@
 [build]
   base = "mi-app/frontend"
   publish = "dist"
-  command = "npm ci --no-optional && npm run build"
+  command = "npm install --include=optional && npm run build"
 
 [build.environment]
   NODE_VERSION = "22"
