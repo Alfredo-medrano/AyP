@@ -4,7 +4,7 @@
     "description": "Sistema de Gestión AyP",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
+    "background_color": "#f9fafb",
     "theme_color": "#667eea",
     "orientation": "portrait-primary",
     "icons": [
