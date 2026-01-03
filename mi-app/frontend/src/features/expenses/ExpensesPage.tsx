@@ -3,6 +3,7 @@ import { useExpenses, useExpensesStats, useCreateExpense, useUpdateExpense, useD
 import { ExpenseModal, type ExpenseFormData } from './ExpenseModal';
 import { useNotification } from '../../components/ui';
 import { exportToExcel, exportToPDF } from '../../utils/export';
+import { ReceiptIcon, MoneyIcon, LightbulbIcon, WrenchIcon, PackageIcon, SpreadsheetIcon, FileTextIcon, PlusIcon, EditIcon, TrashIcon } from '../../components/ui/Icons';
 import type { Expense, ExpenseCategory } from '../../types/database';
 import { EXPENSE_CATEGORIES } from '../../types/database';
 import './expenses.css';
@@ -219,30 +220,30 @@ export function ExpensesPage() {
         <div className="expenses-page">
             {/* Header */}
             <header className="expenses-header">
-                <h1>📋 Gastos</h1>
+                <h1><ReceiptIcon size={28} /> Gastos</h1>
                 <p>Control de gastos y egresos de la iglesia</p>
             </header>
 
             {/* Stats Cards */}
             <div className="expenses-stats-grid">
                 <div className="expense-stat-card total">
-                    <div className="expense-stat-icon">💸</div>
+                    <div className="expense-stat-icon"><MoneyIcon size={28} color="#ef4444" /></div>
                     <div className="expense-stat-amount">{formatCurrency(stats.total)}</div>
                     <div className="expense-stat-label">Total Gastos</div>
                     <div className="expense-stat-count">{stats.count} registros</div>
                 </div>
                 <div className="expense-stat-card servicios">
-                    <div className="expense-stat-icon">💡</div>
+                    <div className="expense-stat-icon"><LightbulbIcon size={28} color="#f59e0b" /></div>
                     <div className="expense-stat-amount">{formatCurrency(stats.byCategory['Servicios Basicos'] || 0)}</div>
                     <div className="expense-stat-label">Servicios</div>
                 </div>
                 <div className="expense-stat-card mantenimiento">
-                    <div className="expense-stat-icon">🔧</div>
+                    <div className="expense-stat-icon"><WrenchIcon size={28} color="#3b82f6" /></div>
                     <div className="expense-stat-amount">{formatCurrency(stats.byCategory['Mantenimiento'] || 0)}</div>
                     <div className="expense-stat-label">Mantenimiento</div>
                 </div>
                 <div className="expense-stat-card otros">
-                    <div className="expense-stat-icon">📦</div>
+                    <div className="expense-stat-icon"><PackageIcon size={28} color="#6b7280" /></div>
                     <div className="expense-stat-amount">{formatCurrency(
                         (stats.byCategory['Ayuda Social'] || 0) +
                         (stats.byCategory['Limpieza'] || 0) +
@@ -303,7 +304,7 @@ export function ExpensesPage() {
                         disabled={filteredExpenses.length === 0}
                         title="Exportar a Excel"
                     >
-                        📊 Excel
+                        <SpreadsheetIcon size={16} /> Excel
                     </button>
                     <button
                         className="export-btn pdf"
@@ -311,14 +312,14 @@ export function ExpensesPage() {
                         disabled={filteredExpenses.length === 0}
                         title="Exportar a PDF"
                     >
-                        📄 PDF
+                        <FileTextIcon size={16} /> PDF
                     </button>
                 </div>
                 <button
                     className="add-expense-btn"
                     onClick={() => handleOpenModal('create')}
                 >
-                    <span>➕</span> Registrar Gasto
+                    <PlusIcon size={18} /> Registrar Gasto
                 </button>
             </div>
 
@@ -344,7 +345,7 @@ export function ExpensesPage() {
                 </div>
             ) : filteredExpenses.length === 0 ? (
                 <div className="expenses-empty-state">
-                    <div className="expenses-empty-icon">📋</div>
+                    <div className="expenses-empty-icon"><ReceiptIcon size={48} color="#94a3b8" /></div>
                     <h3>No hay gastos registrados</h3>
                     <p>
                         {expenses.length === 0
@@ -400,14 +401,14 @@ export function ExpensesPage() {
                                                 onClick={() => handleOpenModal('edit', expense)}
                                                 title="Editar"
                                             >
-                                                ✏️
+                                                <EditIcon size={16} />
                                             </button>
                                             <button
                                                 className="expense-action-btn delete"
                                                 onClick={() => handleDeleteExpense(expense)}
                                                 title="Eliminar"
                                             >
-                                                🗑️
+                                                <TrashIcon size={16} />
                                             </button>
                                         </div>
                                     </td>

@@ -1,4 +1,5 @@
 import type { Member } from '../../types/database';
+import { MapPinIcon, PhoneIcon, CheckIcon, EyeIcon, EditIcon, TrashIcon } from '../../components/ui/Icons';
 
 interface MemberCardProps {
     member: Member;
@@ -59,14 +60,14 @@ export function MemberCard({ member, onView, onEdit, onDelete }: MemberCardProps
             <div className="member-card-body">
                 {member.sector && (
                     <div className="member-detail">
-                        <span className="member-detail-icon">📍</span>
+                        <span className="member-detail-icon"><MapPinIcon size={14} /></span>
                         <span className="member-detail-value">{member.sector.name}</span>
                     </div>
                 )}
 
                 {member.phone && (
                     <div className="member-detail">
-                        <span className="member-detail-icon">📱</span>
+                        <span className="member-detail-icon"><PhoneIcon size={14} /></span>
                         <span className="member-detail-value">{member.phone}</span>
                     </div>
                 )}
@@ -74,7 +75,7 @@ export function MemberCard({ member, onView, onEdit, onDelete }: MemberCardProps
                 <div className="member-detail">
                     {member.is_baptized ? (
                         <span className="baptized-badge">
-                            <span>✓</span> Bautizado
+                            <CheckIcon size={14} /> Bautizado
                         </span>
                     ) : (
                         <span className="not-baptized-badge">
@@ -90,21 +91,21 @@ export function MemberCard({ member, onView, onEdit, onDelete }: MemberCardProps
                     onClick={() => onView(member)}
                     title="Ver detalles"
                 >
-                    👁️ Ver
+                    <EyeIcon size={14} /> Ver
                 </button>
                 <button
                     className="action-btn edit"
                     onClick={() => onEdit(member)}
                     title="Editar miembro"
                 >
-                    ✏️ Editar
+                    <EditIcon size={14} /> Editar
                 </button>
                 <button
                     className="action-btn delete"
                     onClick={() => onDelete(member)}
                     title="Eliminar miembro"
                 >
-                    🗑️
+                    <TrashIcon size={14} />
                 </button>
             </div>
         </div>

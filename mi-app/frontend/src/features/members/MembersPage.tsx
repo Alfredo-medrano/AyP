@@ -4,6 +4,7 @@ import { MemberCard } from './MemberCard';
 import { MembersFilters, type FiltersState } from './MembersFilters';
 import { MemberModal, type MemberFormData } from './MemberModal';
 import { useNotification } from '../../components/ui';
+import { UsersIcon, AlertIcon, PlusIcon, SearchIcon } from '../../components/ui/Icons';
 import type { Member } from '../../types/database';
 import './members.css';
 
@@ -142,7 +143,7 @@ export function MembersPage() {
         return (
             <div className="members-page">
                 <div className="empty-state">
-                    <div className="empty-state-icon">⚠️</div>
+                    <div className="empty-state-icon"><AlertIcon size={48} color="#f59e0b" /></div>
                     <h3>Error al cargar los miembros</h3>
                     <p>Hubo un problema al obtener los datos. Por favor, intente nuevamente.</p>
                 </div>
@@ -154,7 +155,7 @@ export function MembersPage() {
         <div className="members-page">
             {/* Header */}
             <header className="members-header">
-                <h1>👥 Miembros de la Iglesia</h1>
+                <h1><UsersIcon size={28} /> Miembros de la Iglesia</h1>
                 <p>Gestiona la información de los miembros de la congregación</p>
             </header>
 
@@ -181,7 +182,7 @@ export function MembersPage() {
             {/* Search & Add Button */}
             <div className="search-actions-bar">
                 <div className="search-container">
-                    <span className="search-icon">🔍</span>
+                    <span className="search-icon"><SearchIcon size={18} /></span>
                     <input
                         type="text"
                         className="search-input"
@@ -194,7 +195,7 @@ export function MembersPage() {
                     className="add-member-btn"
                     onClick={() => handleOpenModal('create')}
                 >
-                    <span>➕</span> Nuevo Miembro
+                    <PlusIcon size={18} /> Nuevo Miembro
                 </button>
             </div>
 
@@ -213,7 +214,7 @@ export function MembersPage() {
                 </div>
             ) : filteredMembers.length === 0 ? (
                 <div className="empty-state">
-                    <div className="empty-state-icon">👥</div>
+                    <div className="empty-state-icon"><UsersIcon size={48} color="#94a3b8" /></div>
                     <h3>No se encontraron miembros</h3>
                     <p>
                         {members.length === 0

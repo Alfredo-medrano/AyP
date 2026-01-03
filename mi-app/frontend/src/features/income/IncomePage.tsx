@@ -4,6 +4,7 @@ import { IncomeModal, type IncomeFormData } from './IncomeModal';
 import { useNotification } from '../../components/ui';
 import { exportToExcel, exportToPDF } from '../../utils/export';
 import { useFundBalances } from '../../hooks/useFundBalances';
+import { WalletIcon, BookIcon, HeartIcon, ChurchIcon, SpreadsheetIcon, FileTextIcon, PlusIcon, EditIcon, TrashIcon, CloseIcon, AlertIcon } from '../../components/ui/Icons';
 import type { Income, IncomeCategory } from '../../types/database';
 import { INCOME_CATEGORIES } from '../../types/database';
 import './income.css';
@@ -227,14 +228,14 @@ export function IncomePage() {
         <div className="income-page">
             {/* Header */}
             <header className="income-header">
-                <h1>💰 Ingresos</h1>
+                <h1><WalletIcon size={28} /> Ingresos</h1>
                 <p>Gestión de diezmos, ofrendas y donaciones</p>
             </header>
 
             {/* Stats Cards - Ingresos y Saldo Disponible */}
             <div className="income-stats-grid">
                 <div className="income-stat-card total">
-                    <div className="income-stat-icon">💵</div>
+                    <div className="income-stat-icon"><WalletIcon size={28} color="#10b981" /></div>
                     <div className="income-stat-amount" style={{ color: fundBalances.totalAvailable >= 0 ? '#10b981' : '#ef4444' }}>
                         {formatCurrency(fundBalances.totalAvailable)}
                     </div>
@@ -244,7 +245,7 @@ export function IncomePage() {
                     </div>
                 </div>
                 <div className="income-stat-card diezmo">
-                    <div className="income-stat-icon">📖</div>
+                    <div className="income-stat-icon"><BookIcon size={28} color="#3b82f6" /></div>
                     <div className="income-stat-amount" style={{ color: fundBalances.getBalance('Diezmo') >= 0 ? '#10b981' : '#ef4444' }}>
                         {formatCurrency(fundBalances.getBalance('Diezmo'))}
                     </div>
@@ -254,7 +255,7 @@ export function IncomePage() {
                     </div>
                 </div>
                 <div className="income-stat-card ofrenda">
-                    <div className="income-stat-icon">🙏</div>
+                    <div className="income-stat-icon"><HeartIcon size={28} color="#8b5cf6" /></div>
                     <div className="income-stat-amount" style={{ color: (fundBalances.getBalance('Ofrenda General') + fundBalances.getBalance('Ofrenda Especial')) >= 0 ? '#10b981' : '#ef4444' }}>
                         {formatCurrency(fundBalances.getBalance('Ofrenda General') + fundBalances.getBalance('Ofrenda Especial'))}
                     </div>
@@ -264,7 +265,7 @@ export function IncomePage() {
                     </div>
                 </div>
                 <div className="income-stat-card protemplo">
-                    <div className="income-stat-icon">🏛️</div>
+                    <div className="income-stat-icon"><ChurchIcon size={28} color="#f59e0b" /></div>
                     <div className="income-stat-amount" style={{ color: fundBalances.getBalance('Pro-templo') >= 0 ? '#10b981' : '#ef4444' }}>
                         {formatCurrency(fundBalances.getBalance('Pro-templo'))}
                     </div>
@@ -326,7 +327,7 @@ export function IncomePage() {
                         disabled={filteredIncomes.length === 0}
                         title="Exportar a Excel"
                     >
-                        📊 Excel
+                        <SpreadsheetIcon size={16} /> Excel
                     </button>
                     <button
                         className="export-btn pdf"
@@ -334,14 +335,14 @@ export function IncomePage() {
                         disabled={filteredIncomes.length === 0}
                         title="Exportar a PDF"
                     >
-                        📄 PDF
+                        <FileTextIcon size={16} /> PDF
                     </button>
                 </div>
                 <button
                     className="add-income-btn"
                     onClick={() => handleOpenModal('create')}
                 >
-                    <span>➕</span> Registrar Ingreso
+                    <PlusIcon size={18} /> Registrar Ingreso
                 </button>
             </div>
 
@@ -367,7 +368,7 @@ export function IncomePage() {
                 </div>
             ) : filteredIncomes.length === 0 ? (
                 <div className="income-empty-state">
-                    <div className="income-empty-icon">💰</div>
+                    <div className="income-empty-icon"><WalletIcon size={48} color="#94a3b8" /></div>
                     <h3>No hay ingresos registrados</h3>
                     <p>
                         {incomes.length === 0
@@ -422,14 +423,14 @@ export function IncomePage() {
                                                 onClick={() => handleOpenModal('edit', income)}
                                                 title="Editar"
                                             >
-                                                ✏️
+                                                <EditIcon size={16} />
                                             </button>
                                             <button
                                                 className="income-action-btn delete"
                                                 onClick={() => handleDeleteIncome(income)}
                                                 title="Eliminar"
                                             >
-                                                🗑️
+                                                <TrashIcon size={16} />
                                             </button>
                                         </div>
                                     </td>

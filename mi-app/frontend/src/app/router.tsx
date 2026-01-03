@@ -4,15 +4,9 @@ import { AuthPage } from '../features/auth/AuthPage';
 import { MembersPage } from '../features/members/MembersPage';
 import { IncomePage } from '../features/income/IncomePage';
 import { ExpensesPage } from '../features/expenses/ExpensesPage';
+import { ProfilePage } from '../features/profile/ProfilePage';
+import { ReportsPage } from '../features/reports/ReportsPage';
 import { useAuth } from '../hooks/useAuth';
-
-function ReportsPage() {
-    return <div className="page"><h1>Reportes</h1><p>Página de reportes en desarrollo...</p></div>;
-}
-
-function ProfilePage() {
-    return <div className="page"><h1>Mi Perfil</h1><p>Página de perfil en desarrollo...</p></div>;
-}
 
 
 function ConfigurationWarning() {
